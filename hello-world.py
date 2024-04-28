@@ -2,7 +2,7 @@
 import subprocess,os
 from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
 
-PORT_NUMBER = 80
+PORT_NUMBER = 8080
 
 #This class will handles any incoming request from
 #the browser 
@@ -14,11 +14,7 @@ class myHandler(BaseHTTPRequestHandler):
     self.send_header('Content-type','text/html')
     self.end_headers()
     # Send the html message
-    self.wfile.write("*** Python - Hello World ! ***\n")
-    self.wfile.write("WELCOME_MSG : " + os.getenv('WELCOME_MSG', 'undef') )
-    self.wfile.write("\n")
-    self.wfile.write("Hostname is : " + subprocess.check_output("uname -n", shell=True))
-    self.wfile.write("Process ID  : " + str(os.getpid()))
+    self.wfile.write("{"message":"Welcome to DIGITOPS"}")
     return
 
 try:
